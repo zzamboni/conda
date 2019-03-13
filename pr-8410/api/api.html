@@ -1,0 +1,687 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>conda.api &mdash; conda 4.6.8.post9+a94cbd2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release notes" href="../release-notes.html" />
+    <link rel="prev" title="conda.api.python_api" href="python_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> conda
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.6.8.post9+a94cbd2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Conda Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Conda Python API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="solver.html"><code class="docutils literal notranslate"><span class="pre">conda.api.Solver</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html"><code class="docutils literal notranslate"><span class="pre">conda.api.python_api</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">conda.api</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Command reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">conda</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Conda Python API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">conda.api</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-conda.api">
+<span id="conda-api"></span><h1><code class="docutils literal notranslate"><span class="pre">conda.api</span></code><a class="headerlink" href="#module-conda.api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="conda.api.Solver">
+<em class="property">class </em><code class="descclassname">conda.api.</code><code class="descname">Solver</code><span class="sig-paren">(</span><em>prefix</em>, <em>channels</em>, <em>subdirs=()</em>, <em>specs_to_add=()</em>, <em>specs_to_remove=()</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.Solver" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>A high-level API to conda's solving logic. Three public methods are provided to access a
+solution in various forms.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a></li>
+<li><a class="reference internal" href="#conda.api.Solver.solve_for_diff" title="conda.api.Solver.solve_for_diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_for_diff()</span></code></a></li>
+<li><a class="reference internal" href="#conda.api.Solver.solve_for_transaction" title="conda.api.Solver.solve_for_transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_for_transaction()</span></code></a></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="conda.api.Solver.solve_final_state">
+<code class="descname">solve_final_state</code><span class="sig-paren">(</span><em>update_modifier=&lt;auxlib._Null object&gt;</em>, <em>deps_modifier=&lt;auxlib._Null object&gt;</em>, <em>prune=&lt;auxlib._Null object&gt;</em>, <em>ignore_pinned=&lt;auxlib._Null object&gt;</em>, <em>force_remove=&lt;auxlib._Null object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.Solver.solve_final_state" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Gives the final, solved state of the environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deps_modifier</strong> (<a class="reference internal" href="solver.html#conda.core.solve.DepsModifier" title="conda.core.solve.DepsModifier"><em>DepsModifier</em></a>) -- <p>An optional flag indicating special solver handling for dependencies. The
+default solver behavior is to be as conservative as possible with dependency
+updates (in the case the dependency already exists in the environment), while
+still ensuring all dependencies are satisfied.  Options include</p>
+<blockquote>
+<div><ul>
+<li>NO_DEPS</li>
+<li>ONLY_DEPS</li>
+<li>UPDATE_DEPS</li>
+<li>UPDATE_DEPS_ONLY_DEPS</li>
+<li>FREEZE_INSTALLED</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>prune</strong> (<em>bool</em>) -- If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the solution will not contain packages that were
+previously brought into the environment as dependencies but are no longer
+required as dependencies and are not user-requested.</li>
+<li><strong>ignore_pinned</strong> (<em>bool</em>) -- If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the solution will ignore pinned package configuration
+for the prefix.</li>
+<li><strong>force_remove</strong> (<em>bool</em>) -- Forces removal of a package without removing packages that depend on it.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">In sorted dependency order from roots to leaves, the package references for
+the solved state of the environment.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Tuple[PackageRef]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.Solver.solve_for_diff">
+<code class="descname">solve_for_diff</code><span class="sig-paren">(</span><em>update_modifier=&lt;auxlib._Null object&gt;</em>, <em>deps_modifier=&lt;auxlib._Null object&gt;</em>, <em>prune=&lt;auxlib._Null object&gt;</em>, <em>ignore_pinned=&lt;auxlib._Null object&gt;</em>, <em>force_remove=&lt;auxlib._Null object&gt;</em>, <em>force_reinstall=False</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.Solver.solve_for_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Gives the package references to remove from an environment, followed by
+the package references to add to an environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deps_modifier</strong> (<a class="reference internal" href="solver.html#conda.core.solve.DepsModifier" title="conda.core.solve.DepsModifier"><em>DepsModifier</em></a>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>prune</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>ignore_pinned</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>force_remove</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>force_reinstall</strong> (<em>bool</em>) -- For requested specs_to_add that are already satisfied in the environment,
+instructs the solver to remove the package and spec from the environment,
+and then add it back--possibly with the exact package instance modified,
+depending on the spec exactness.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A two-tuple of PackageRef sequences.  The first is the group of packages to
+remove from the environment, in sorted dependency order from leaves to roots.
+The second is the group of packages to add to the environment, in sorted
+dependency order from roots to leaves.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Tuple[PackageRef], Tuple[PackageRef]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.Solver.solve_for_transaction">
+<code class="descname">solve_for_transaction</code><span class="sig-paren">(</span><em>update_modifier=&lt;auxlib._Null object&gt;</em>, <em>deps_modifier=&lt;auxlib._Null object&gt;</em>, <em>prune=&lt;auxlib._Null object&gt;</em>, <em>ignore_pinned=&lt;auxlib._Null object&gt;</em>, <em>force_remove=&lt;auxlib._Null object&gt;</em>, <em>force_reinstall=False</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.Solver.solve_for_transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Gives an UnlinkLinkTransaction instance that can be used to execute the solution
+on an environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deps_modifier</strong> (<a class="reference internal" href="solver.html#conda.core.solve.DepsModifier" title="conda.core.solve.DepsModifier"><em>DepsModifier</em></a>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>prune</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>ignore_pinned</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>force_remove</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_final_state" title="conda.api.Solver.solve_final_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_final_state()</span></code></a>.</li>
+<li><strong>force_reinstall</strong> (<em>bool</em>) -- See <a class="reference internal" href="#conda.api.Solver.solve_for_diff" title="conda.api.Solver.solve_for_diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_for_diff()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">UnlinkLinkTransaction</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="conda.api.SubdirData">
+<em class="property">class </em><code class="descclassname">conda.api.</code><code class="descname">SubdirData</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.SubdirData" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>High-level management and usage of repodata.json for subdirs.</p>
+<dl class="method">
+<dt id="conda.api.SubdirData.iter_records">
+<code class="descname">iter_records</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.SubdirData.iter_records" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A generator over all records contained in the repodata.json</dt>
+<dd>instance.  Warning: this is a generator that is exhausted on first use.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Iterable[PackageRecord]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.SubdirData.query">
+<code class="descname">query</code><span class="sig-paren">(</span><em>package_ref_or_match_spec</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.SubdirData.query" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Run a query against this specific instance of repodata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>package_ref_or_match_spec</strong> (<em>PackageRef</em><em> or </em><em>MatchSpec</em><em> or </em><em>str</em>) -- Either an exact <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> to match against, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code>
+query object.  A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> will be turned into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code> automatically.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple[PackageRecord]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="conda.api.SubdirData.query_all">
+<em class="property">static </em><code class="descname">query_all</code><span class="sig-paren">(</span><em>package_ref_or_match_spec</em>, <em>channels=None</em>, <em>subdirs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.SubdirData.query_all" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Run a query against all repodata instances in channel/subdir matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>package_ref_or_match_spec</strong> (<em>PackageRef</em><em> or </em><em>MatchSpec</em><em> or </em><em>str</em>) -- Either an exact <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> to match against, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code>
+query object.  A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> will be turned into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code> automatically.</li>
+<li><strong>channels</strong> (<em>Iterable</em><em>[</em><em>Channel</em><em> or </em><em>str</em><em>] or </em><em>None</em>) -- An iterable of urls for channels or <code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code> objects. If None, will fall
+back to context.channels.</li>
+<li><strong>subdirs</strong> (<em>Iterable</em><em>[</em><em>str</em><em>] or </em><em>None</em>) -- If None, will fall back to context.subdirs.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Tuple[PackageRecord]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.SubdirData.reload">
+<code class="descname">reload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.SubdirData.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Update the instance with new information. Backing information (i.e. repodata.json)
+is lazily downloaded/loaded on first use by the other methods of this class. You
+should only use this method if you are <em>sure</em> you have outdated data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">SubdirData</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="conda.api.PackageCacheData">
+<em class="property">class </em><code class="descclassname">conda.api.</code><code class="descname">PackageCacheData</code><span class="sig-paren">(</span><em>pkgs_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>High-level management and usage of package caches.</p>
+<dl class="staticmethod">
+<dt id="conda.api.PackageCacheData.first_writable">
+<em class="property">static </em><code class="descname">first_writable</code><span class="sig-paren">(</span><em>pkgs_dirs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData.first_writable" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Get an instance object for the first writable package cache.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pkgs_dirs</strong> (<em>Iterable</em><em>[</em><em>str</em><em>]</em>) -- If None, will fall back to context.pkgs_dirs.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance for the first writable package cache.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#conda.api.PackageCacheData" title="conda.api.PackageCacheData">PackageCacheData</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PackageCacheData.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>package_ref</em>, <em>default=&lt;auxlib._Null object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData.get" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>package_ref</strong> (<em>PackageRef</em>) -- A <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> instance representing the key for the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageCacheRecord</span></code> being sought.</li>
+<li><strong>default</strong> -- The default value to return if the record does not exist. If not
+specified and no record exists, <code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code> is raised.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">PackageCacheRecord</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="conda.api.PackageCacheData.is_writable">
+<code class="descname">is_writable</code><a class="headerlink" href="#conda.api.PackageCacheData.is_writable" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Indicates if the package cache location is writable or read-only.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PackageCacheData.iter_records">
+<code class="descname">iter_records</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData.iter_records" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A generator over all records contained in the package</dt>
+<dd>cache instance.  Warning: this is a generator that is exhausted on first use.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Iterable[PackageCacheRecord]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PackageCacheData.query">
+<code class="descname">query</code><span class="sig-paren">(</span><em>package_ref_or_match_spec</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData.query" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Run a query against this specific package cache instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>package_ref_or_match_spec</strong> (<em>PackageRef</em><em> or </em><em>MatchSpec</em><em> or </em><em>str</em>) -- Either an exact <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> to match against, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code>
+query object.  A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> will be turned into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code> automatically.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple[PackageCacheRecord]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="conda.api.PackageCacheData.query_all">
+<em class="property">static </em><code class="descname">query_all</code><span class="sig-paren">(</span><em>package_ref_or_match_spec</em>, <em>pkgs_dirs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData.query_all" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Run a query against all package caches.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>package_ref_or_match_spec</strong> (<em>PackageRef</em><em> or </em><em>MatchSpec</em><em> or </em><em>str</em>) -- Either an exact <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> to match against, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code>
+query object.  A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> will be turned into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code> automatically.</li>
+<li><strong>pkgs_dirs</strong> (<em>Iterable</em><em>[</em><em>str</em><em>] or </em><em>None</em>) -- If None, will fall back to context.pkgs_dirs.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Tuple[PackageCacheRecord]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PackageCacheData.reload">
+<code class="descname">reload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PackageCacheData.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Update the instance with new information. Backing information (i.e. contents of
+the pkgs_dir) is lazily loaded on first use by the other methods of this class. You
+should only use this method if you are <em>sure</em> you have outdated data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">PackageCacheData</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="conda.api.PrefixData">
+<em class="property">class </em><code class="descclassname">conda.api.</code><code class="descname">PrefixData</code><span class="sig-paren">(</span><em>prefix_path</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PrefixData" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>High-level management and usage of conda environment prefixes.</p>
+<dl class="method">
+<dt id="conda.api.PrefixData.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>package_ref</em>, <em>default=&lt;auxlib._Null object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PrefixData.get" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>package_ref</strong> (<em>PackageRef</em>) -- A <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> instance representing the key for the
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">PrefixRecord</span></code> being sought.</li>
+<li><strong>default</strong> -- The default value to return if the record does not exist. If not
+specified and no record exists, <code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code> is raised.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">PrefixRecord</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="conda.api.PrefixData.is_writable">
+<code class="descname">is_writable</code><a class="headerlink" href="#conda.api.PrefixData.is_writable" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Indicates if the prefix is writable or read-only.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the prefix is writable.  False if read-only.  None if the prefix
+does not exist as a conda environment.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool or None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PrefixData.iter_records">
+<code class="descname">iter_records</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PrefixData.iter_records" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A generator over all records contained in the prefix.</dt>
+<dd>Warning: this is a generator that is exhausted on first use.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Iterable[PrefixRecord]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PrefixData.query">
+<code class="descname">query</code><span class="sig-paren">(</span><em>package_ref_or_match_spec</em><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PrefixData.query" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Run a query against this specific prefix instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>package_ref_or_match_spec</strong> (<em>PackageRef</em><em> or </em><em>MatchSpec</em><em> or </em><em>str</em>) -- Either an exact <code class="xref py py-obj docutils literal notranslate"><span class="pre">PackageRef</span></code> to match against, or a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code>
+query object.  A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> will be turned into a <code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchSpec</span></code> automatically.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple[PrefixRecord]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conda.api.PrefixData.reload">
+<code class="descname">reload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conda.api.PrefixData.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Beta</strong> While in beta, expect both major and minor changes across minor releases.</p>
+<p>Update the instance with new information. Backing information (i.e. contents of
+the conda-meta directory) is lazily loaded on first use by the other methods of this
+class. You should only use this method if you are <em>sure</em> you have outdated data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">PrefixData</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../release-notes.html" class="btn btn-neutral float-right" title="Release notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_api.html" class="btn btn-neutral float-left" title="conda.api.python_api" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Continuum Analytics
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-11', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
